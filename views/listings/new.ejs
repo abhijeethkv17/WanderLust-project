@@ -1,0 +1,195 @@
+<% layout("/layouts/boilerplate") %>
+<style></style>
+
+<div class="row">
+  <div class="col-8 offset-2">
+    <br /><br />
+    <h2>Create a New Listing</h2>
+    <form
+      method="post"
+      action="/listings"
+      novalidate
+      class="needs-validation"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <lable for="title" class="form-label">Title</lable>
+        <input
+          type="text"
+          placeholder="Enter title"
+          name="listing[title]"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Title is required</div>
+      </div>
+
+      <div class="mb-3">
+        <lable for="description" class="form-label">Description</lable>
+        <textarea
+          type="text"
+          placeholder="Enter description"
+          name="listing[description]"
+          class="form-control"
+          required
+        ></textarea>
+        <div class="invalid-feedback">Enter a short description</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload Listing Image</label>
+        <input
+          type="file"
+          name="listing[image]"
+          class="form-control"
+          required
+        />
+      </div>
+
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price</label>
+          <input
+            type="number"
+            placeholder="Enter Price"
+            name="listing[price]"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Enter a valid Price</div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <lable for="country" class="form-label">Country</lable>
+          <input
+            type="text"
+            placeholder="Enter country"
+            name="listing[country]"
+            class="form-control"
+            required
+          />
+          <div class="invalid-feedback">Enter a valid Country Name</div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <lable for="location" class="form-label">Location</lable>
+        <input
+          type="text"
+          placeholder="Enter location"
+          name="listing[location]"
+          class="form-control"
+          required
+        />
+        <div class="invalid-feedback">Enter a valid Location</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <div class="dropdown d-inline ms-3">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            data-bs-toggle="dropdown"
+            id="category-dropdown-button"
+          >
+            Choose Category
+          </button>
+          <ul class="dropdown-menu">
+            <li>
+              <button class="dropdown-item" type="button" data-value="Rooms">
+                Rooms
+              </button>
+            </li>
+            <li>
+              <button
+                class="dropdown-item"
+                type="button"
+                data-value="IconicCities"
+              >
+                Iconic Cities
+              </button>
+            </li>
+            <li>
+              <button
+                class="dropdown-item"
+                type="button"
+                data-value="Mountains"
+              >
+                Mountains
+              </button>
+            </li>
+            <li>
+              <button class="dropdown-item" type="button" data-value="Castles">
+                Castles
+              </button>
+            </li>
+            <li>
+              <button class="dropdown-item" type="button" data-value="Farms">
+                Farms
+              </button>
+            </li>
+            <li>
+              <button class="dropdown-item" type="button" data-value="Camping">
+                Camping
+              </button>
+            </li>
+            <li>
+              <button
+                class="dropdown-item"
+                type="button"
+                data-value="AmazingPools"
+              >
+                Amazing Pools
+              </button>
+            </li>
+            <li>
+              <button class="dropdown-item" type="button" data-value="Arctic">
+                Arctic
+              </button>
+            </li>
+            <li>
+              <button class="dropdown-item" type="button" data-value="Boats">
+                Boats
+              </button>
+            </li>
+          </ul>
+        </div>
+
+        <input
+          type="hidden"
+          name="category"
+          id="category-input-field"
+          value=""
+          required
+        />
+      </div>
+
+      <button class="btn btn-dark add-btn">Add</button>
+      <br /><br />
+    </form>
+  </div>
+</div>
+
+<script>
+  // Get references to the key elements
+  const dropdownButton = document.getElementById("category-dropdown-button");
+  const dropdownItems = document.querySelectorAll(
+    ".dropdown-menu .dropdown-item"
+  );
+  const categoryInputField = document.getElementById("category-input-field"); // New reference
+
+  // Loop through all the item buttons
+  dropdownItems.forEach((item) => {
+    item.addEventListener("click", function () {
+      // 1. Update the display text on the main button
+      const selectedText = this.textContent.trim();
+      dropdownButton.textContent = selectedText;
+
+      // 2. Update the hidden input's VALUE (this is what the backend sees!)
+      // We use the data-value attribute for a clean backend value
+      const selectedValue = this.getAttribute("data-value");
+      categoryInputField.value = selectedValue;
+    });
+  });
+</script>
