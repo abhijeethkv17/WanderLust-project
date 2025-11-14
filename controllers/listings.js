@@ -78,24 +78,3 @@ module.exports.deleteListing = async (req, res) => {
   res.redirect("/listings");
 };
 
-module.exports.categoryFilter = async (req, res) => {
-  let filter = {};
-
-  // Checks for a query parameter like ?category=Rooms
-  if (req.query.category) {
-    filter.category = req.query.category;
-  }
-
-  // Fetches listings based on the filter (either filtered or all)
-  const allListings = await Listing.find(filter);
-
-  if (allListings.length === 0 && req.query.category) {
-    req.flash(
-      "error",
-      `No listings found in the '${req.query.category}' category.`
-    );
-  }
-
-  // Renders the index EJS file
-  res.render("listings/index.ejs", { allListings });
-};
