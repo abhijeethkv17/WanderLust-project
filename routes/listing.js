@@ -42,7 +42,6 @@ router.get(
   wrapAsync(listingsController.renderEditForm)
 );
 
-// Category Filter Route
-router.get("/listings", listingsController.categoryFilter);
 
 module.exports = router;
+
