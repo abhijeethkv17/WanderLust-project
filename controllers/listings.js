@@ -35,7 +35,6 @@ module.exports.createListing = async (req, res, next) => {
   let url = req.file.path;
   let filename = req.file.filename;
   let newListing = new Listing(req.body.listing);
-  newListing.category = req.body.listing.category;
   newListing.owner = req.user._id;
   newListing.image = { url: url, filename: filename };
   newListing.geometry = response.body.features[0].geometry;
@@ -77,4 +76,5 @@ module.exports.deleteListing = async (req, res) => {
   console.log(deletedListing);
   res.redirect("/listings");
 };
+
 
