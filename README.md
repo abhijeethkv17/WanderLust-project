@@ -71,7 +71,7 @@ This project was built as part of my Full Stack Web Development learning journey
 
 ## 🧩 Project Structure
 
-```
+```bash
 Wanderlust/
 │
 │── backend/
@@ -99,6 +99,87 @@ Wanderlust/
 │── schema.js
 │── README.md
 
+```
+--- 
+
+## 🧮 Database Models Overview
+
+### **User Model**
+- username
+- email
+- password hash
+- listings[] (optional reference)
+
+### **Listing Model**
+- title
+- description
+- price
+- location
+- images (Cloudinary)
+- geometry (coordinates for Mapbox)
+- owner (User reference)
+- reviews[] (Review reference)
+
+### **Review Model**
+- rating
+- comment
+- author (User reference)
+
+### **schema.js**
+Joi validation schemas for:
+- Listing
+- Review
+- User
+
+---
+
+## 🧰 Important Files
+
+### **app.js**
+- Main Express application  
+- Express config, sessions, middleware  
+- Route mounting  
+- Error handling  
+
+### **middleware.js**
+- Authentication checks  
+- Authorization logic  
+- Input validation blocks  
+
+### **public/**
+- Static CSS/JS/images  
+- Mapbox scripts  
+- Client-side JavaScript  
+
+### **views/**
+- EJS templates  
+- Layouts and page components  
+
+--- 
+
+## 📦 Future Improvements
+
+- Add booking/reservation system  
+- Add search filters: price, rating, distance  
+- Add wishlist/favorites  
+- Build separate React frontend (Full MERN SPA)  
+- Add messaging between hosts & guests  
+
+---
+
+## 🧑‍💻 Author
+
+**Abhijeeth K V**  
+Full Stack Developer | CSE Student  
+
+- LinkedIn: https://www.linkedin.com/in/abhijeethkv  
+- GitHub: https://github.com/abhijeethkv17
+
+---
+
+## ⭐ Support
+
+If this project helped or inspired you, please give it a ⭐ star on GitHub!
 
 
 
