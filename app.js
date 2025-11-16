@@ -80,7 +80,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res) => {
-  res.redirect("/listings);
+  res.redirect("/listings");
 });
 
 app.use("/listings", listings);
@@ -102,6 +102,7 @@ app.use((err, req, res, next) => {
 app.listen(8080, () => {
   console.log("Server is Listening to port 8080");
 });
+
 
 
 
