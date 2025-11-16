@@ -63,10 +63,6 @@ const sessionOptions = {
   },
 };
 
-app.get("/", (req, res) => {
-  res.render("index.ejs");
-});
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -81,6 +77,10 @@ app.use((req, res, next) => {
   res.locals.error = req.flash("error");
   res.locals.currentUser = req.user;
   next();
+});
+
+app.get("/", (req, res) => {
+  res.render("index.ejs");
 });
 
 app.use("/listings", listings);
@@ -102,4 +102,5 @@ app.use((err, req, res, next) => {
 app.listen(8080, () => {
   console.log("Server is Listening to port 8080");
 });
+
 
